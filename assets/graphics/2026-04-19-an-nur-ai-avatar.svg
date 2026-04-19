@@ -1,0 +1,331 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Outer circular clip -->
+    <clipPath id="circleClip">
+      <circle cx="200" cy="200" r="195"/>
+    </clipPath>
+
+    <!-- Background radial glow -->
+    <radialGradient id="bgGrad" cx="50%" cy="48%" r="55%">
+      <stop offset="0%" stop-color="#f7f0dc"/>
+      <stop offset="35%" stop-color="#e8d9a0" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#2d6b4a" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#1a3d2b"/>
+    </radialGradient>
+
+    <!-- Halo glow -->
+    <radialGradient id="haloGrad" cx="50%" cy="38%" r="40%">
+      <stop offset="0%" stop-color="#fff8e1" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#f6d76b" stop-opacity="0.6"/>
+      <stop offset="80%" stop-color="#c9a227" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#c9a227" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Figure core glow -->
+    <radialGradient id="figureGlow" cx="50%" cy="44%" r="38%">
+      <stop offset="0%" stop-color="#fffde4" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#f6d76b" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#f6d76b" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Robe gradient emerald-gold -->
+    <linearGradient id="robeGrad" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#d4a84b"/>
+      <stop offset="25%" stop-color="#2e7d52"/>
+      <stop offset="55%" stop-color="#1b5e38"/>
+      <stop offset="80%" stop-color="#3a7a56"/>
+      <stop offset="100%" stop-color="#245c40"/>
+    </linearGradient>
+
+    <!-- Inner robe sheen -->
+    <linearGradient id="robeSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8c96e" stop-opacity="0.55"/>
+      <stop offset="50%" stop-color="#2d6b4a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1a3d2b" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <!-- Watercolor texture filter -->
+    <filter id="watercolor" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.06" numOctaves="4" seed="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+      <feGaussianBlur in="displaced" stdDeviation="1.2" result="blurred"/>
+      <feBlend in="SourceGraphic" in2="blurred" mode="multiply" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Soft edge blur filter -->
+    <filter id="softEdge" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+
+    <!-- Glow filter -->
+    <filter id="glowFilter" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="glow"/>
+      <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+    </filter>
+
+    <!-- Face glow -->
+    <radialGradient id="faceGrad" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#fdf3d0"/>
+      <stop offset="60%" stop-color="#e8c97a"/>
+      <stop offset="100%" stop-color="#c8a050" stop-opacity="0.8"/>
+    </radialGradient>
+
+    <!-- Watercolor wash overlay -->
+    <filter id="wash" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="turbulence" baseFrequency="0.02 0.03" numOctaves="3" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!-- Subtle paper texture -->
+    <filter id="paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noiseOut"/>
+      <feColorMatrix type="saturate" values="0" in="noiseOut" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Rim light on circle -->
+    <radialGradient id="rimLight" cx="50%" cy="50%" r="50%">
+      <stop offset="80%" stop-color="transparent"/>
+      <stop offset="93%" stop-color="#d4a84b" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#c9962a" stop-opacity="0.7"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ─── CIRCULAR FRAME ─── -->
+  <circle cx="200" cy="200" r="195" fill="#1a3d2b"/>
+
+  <g clip-path="url(#circleClip)">
+
+    <!-- Background wash -->
+    <rect x="0" y="0" width="400" height="400" fill="url(#bgGrad)"/>
+
+    <!-- Watercolor background texture layer -->
+    <rect x="0" y="0" width="400" height="400" fill="#2d6b4a" opacity="0.18" filter="url(#wash)"/>
+
+    <!-- Deep emerald corner washes -->
+    <ellipse cx="60" cy="70" rx="140" ry="110" fill="#1b5e38" opacity="0.35" filter="url(#softEdge)"/>
+    <ellipse cx="340" cy="80" rx="120" ry="100" fill="#245c40" opacity="0.28" filter="url(#softEdge)"/>
+    <ellipse cx="80" cy="340" rx="130" ry="100" fill="#1a3d2b" opacity="0.4" filter="url(#softEdge)"/>
+    <ellipse cx="330" cy="360" rx="110" ry="90" fill="#1b5e38" opacity="0.32" filter="url(#softEdge)"/>
+
+    <!-- Gold warm wash upper center -->
+    <ellipse cx="200" cy="145" rx="90" ry="75" fill="#e8c96e" opacity="0.22" filter="url(#softEdge)"/>
+
+    <!-- ─── HALO / RADIANT LIGHT ─── -->
+    <!-- Outer halo ring soft -->
+    <circle cx="200" cy="152" r="82" fill="none" stroke="#f6d76b" stroke-width="2.5" opacity="0.18" filter="url(#softEdge)"/>
+    <circle cx="200" cy="152" r="74" fill="none" stroke="#f9e49a" stroke-width="1.5" opacity="0.22" filter="url(#softEdge)"/>
+
+    <!-- Halo glow disc -->
+    <circle cx="200" cy="148" r="88" fill="url(#haloGrad)" filter="url(#glowFilter)"/>
+
+    <!-- Radiant light rays (subtle) -->
+    <g opacity="0.13" filter="url(#softEdge)">
+      <line x1="200" y1="148" x2="200" y2="30" stroke="#f9e49a" stroke-width="2"/>
+      <line x1="200" y1="148" x2="258" y2="42" stroke="#f9e49a" stroke-width="1.5"/>
+      <line x1="200" y1="148" x2="142" y2="42" stroke="#f9e49a" stroke-width="1.5"/>
+      <line x1="200" y1="148" x2="300" y2="78" stroke="#f9e49a" stroke-width="1"/>
+      <line x1="200" y1="148" x2="100" y2="78" stroke="#f9e49a" stroke-width="1"/>
+      <line x1="200" y1="148" x2="330" y2="130" stroke="#f9e49a" stroke-width="1"/>
+      <line x1="200" y1="148" x2="70" y2="130" stroke="#f9e49a" stroke-width="1"/>
+    </g>
+
+    <!-- ─── FIGURE GLOW CORE ─── -->
+    <ellipse cx="200" cy="260" rx="115" ry="160" fill="url(#figureGlow)" filter="url(#glowFilter)"/>
+
+    <!-- ─── ROBE / BODY ─── -->
+    <!-- Main robe shape — flowing, wide -->
+    <path d="
+      M200 178
+      C175 185, 148 195, 125 218
+      C100 242, 88 268, 82 295
+      C76 322, 74 355, 76 395
+      L324 395
+      C326 355, 324 322, 318 295
+      C312 268, 300 242, 275 218
+      C252 195, 225 185, 200 178
+      Z
+    " fill="url(#robeGrad)" opacity="0.92" filter="url(#watercolor)"/>
+
+    <!-- Robe inner sheen / folds -->
+    <path d="
+      M200 185
+      C185 198, 168 215, 158 240
+      C148 265, 145 295, 146 340
+      L185 340
+      C184 295, 186 265, 192 242
+      C196 225, 200 210, 200 185
+      Z
+    " fill="url(#robeSheen)" opacity="0.5" filter="url(#softEdge)"/>
+
+    <path d="
+      M200 185
+      C215 198, 232 215, 242 240
+      C252 265, 255 295, 254 340
+      L215 340
+      C216 295, 214 265, 208 242
+      C204 225, 200 210, 200 185
+      Z
+    " fill="url(#robeSheen)" opacity="0.4" filter="url(#softEdge)"/>
+
+    <!-- Gold trim at top of robe / collar -->
+    <path d="
+      M200 178
+      C190 182, 180 186, 172 192
+      C182 190, 191 188, 200 186
+      C209 188, 218 190, 228 192
+      C220 186, 210 182, 200 178
+      Z
+    " fill="#d4a84b" opacity="0.75" filter="url(#softEdge)"/>
+
+    <!-- ─── MANTLE / OUTER WRAP ─── -->
+    <!-- Left side mantle -->
+    <path d="
+      M175 195
+      C155 210, 130 232, 112 260
+      C95 285, 86 315, 84 360
+      L130 360
+      C128 318, 135 292, 150 270
+      C162 252, 178 235, 190 218
+      Z
+    " fill="#1b5e38" opacity="0.55" filter="url(#watercolor)"/>
+
+    <!-- Right side mantle -->
+    <path d="
+      M225 195
+      C245 210, 270 232, 288 260
+      C305 285, 314 315, 316 360
+      L270 360
+      C272 318, 265 292, 250 270
+      C238 252, 222 235, 210 218
+      Z
+    " fill="#1b5e38" opacity="0.5" filter="url(#watercolor)"/>
+
+    <!-- Gold mantle edge accents -->
+    <path d="M175 195 C165 210, 152 228, 144 248" stroke="#d4a84b" stroke-width="2" fill="none" opacity="0.55" filter="url(#softEdge)"/>
+    <path d="M225 195 C235 210, 248 228, 256 248" stroke="#d4a84b" stroke-width="2" fill="none" opacity="0.5" filter="url(#softEdge)"/>
+
+    <!-- ─── NECK ─── -->
+    <ellipse cx="200" cy="177" rx="18" ry="10" fill="#e8c97a" opacity="0.7" filter="url(#softEdge)"/>
+
+    <!-- ─── HEAD & FACE ─── -->
+    <!-- Soft radiant glow behind head -->
+    <circle cx="200" cy="148" r="60" fill="#f9e49a" opacity="0.28" filter="url(#glowFilter)"/>
+
+    <!-- Head shape — soft, oval -->
+    <ellipse cx="200" cy="148" rx="46" ry="52" fill="url(#faceGrad)" filter="url(#watercolor)"/>
+
+    <!-- Subtle facial features — impressionistic, not literal -->
+    <!-- Eye zone — a gentle shadow wash -->
+    <ellipse cx="185" cy="143" rx="9" ry="5" fill="#b8860b" opacity="0.22" filter="url(#softEdge)"/>
+    <ellipse cx="215" cy="143" rx="9" ry="5" fill="#b8860b" opacity="0.22" filter="url(#softEdge)"/>
+
+    <!-- Eye glints — soft light -->
+    <ellipse cx="184" cy="141" rx="4" ry="2.5" fill="#1a3d2b" opacity="0.45" filter="url(#softEdge)"/>
+    <ellipse cx="216" cy="141" rx="4" ry="2.5" fill="#1a3d2b" opacity="0.45" filter="url(#softEdge)"/>
+    <circle cx="183" cy="140" r="1.2" fill="#fffde4" opacity="0.6"/>
+    <circle cx="215" cy="140" r="1.2" fill="#fffde4" opacity="0.6"/>
+
+    <!-- Nose suggestion -->
+    <ellipse cx="200" cy="154" rx="5" ry="6" fill="#c8a050" opacity="0.18" filter="url(#softEdge)"/>
+
+    <!-- Lips — gentle, serene suggestion -->
+    <path d="M192 163 Q200 167, 208 163" stroke="#b8860b" stroke-width="1.5" fill="none" opacity="0.32" stroke-linecap="round" filter="url(#softEdge)"/>
+
+    <!-- Brow ridge — very soft -->
+    <path d="M178 137 Q185 133, 192 136" stroke="#9a7020" stroke-width="1.2" fill="none" opacity="0.25" stroke-linecap="round" filter="url(#softEdge)"/>
+    <path d="M208 136 Q215 133, 222 137" stroke="#9a7020" stroke-width="1.2" fill="none" opacity="0.25" stroke-linecap="round" filter="url(#softEdge)"/>
+
+    <!-- ─── HEADWRAP / CROWN CLOTH ─── -->
+    <!-- Flowing cloth/headwrap — emerald and gold -->
+    <path d="
+      M158 128
+      C160 108, 168 95, 180 88
+      C190 82, 200 80, 210 80
+      C222 80, 234 84, 242 92
+      C250 100, 254 112, 252 128
+      C248 122, 240 116, 230 112
+      C218 108, 208 106, 200 106
+      C192 106, 182 108, 172 112
+      C162 116, 158 122, 158 128
+      Z
+    " fill="#2d6b4a" opacity="0.75" filter="url(#watercolor)"/>
+
+    <!-- Gold band across crown -->
+    <path d="
+      M163 125
+      C170 118, 182 113, 200 112
+      C218 113, 230 118, 237 125
+    " stroke="#d4a84b" stroke-width="3" fill="none" opacity="0.65" stroke-linecap="round" filter="url(#softEdge)"/>
+
+    <!-- Crown central ornament — small radiant point -->
+    <circle cx="200" cy="95" r="5" fill="#f6d76b" opacity="0.7" filter="url(#glowFilter)"/>
+    <circle cx="200" cy="95" r="2.5" fill="#fffde4" opacity="0.9"/>
+
+    <!-- Flowing cloth drape left -->
+    <path d="
+      M162 128
+      C150 138, 142 150, 138 166
+      C134 178, 134 190, 136 202
+      C140 196, 144 186, 150 178
+      C156 168, 162 154, 166 140
+      Z
+    " fill="#2d6b4a" opacity="0.55" filter="url(#watercolor)"/>
+
+    <!-- Flowing cloth drape right -->
+    <path d="
+      M238 128
+      C250 138, 258 150, 262 166
+      C266 178, 266 190, 264 202
+      C260 196, 256 186, 250 178
+      C244 168, 238 154, 234 140
+      Z
+    " fill="#3a7a56" opacity="0.5" filter="url(#watercolor)"/>
+
+    <!-- ─── HAND / GESTURE SUGGESTION ─── -->
+    <!-- Left hand gesture — open, receiving -->
+    <ellipse cx="140" cy="290" rx="22" ry="14" fill="#e8c97a" opacity="0.38" filter="url(#softEdge)" transform="rotate(-20, 140, 290)"/>
+    <!-- Right hand gesture -->
+    <ellipse cx="260" cy="290" rx="22" ry="14" fill="#e8c97a" opacity="0.33" filter="url(#softEdge)" transform="rotate(20, 260, 290)"/>
+
+    <!-- ─── SCATTERED LIGHT PARTICLES ─── -->
+    <g opacity="0.45" filter="url(#glowFilter)">
+      <circle cx="148" cy="198" r="2" fill="#f9e49a"/>
+      <circle cx="255" cy="205" r="1.5" fill="#f9e49a"/>
+      <circle cx="168" cy="228" r="1" fill="#fffde4"/>
+      <circle cx="235" cy="222" r="1.2" fill="#fffde4"/>
+      <circle cx="138" cy="255" r="1.5" fill="#f6d76b"/>
+      <circle cx="265" cy="248" r="1" fill="#f6d76b"/>
+      <circle cx="122" cy="280" r="1" fill="#f9e49a"/>
+      <circle cx="278" cy="270" r="1.3" fill="#f9e49a"/>
+      <circle cx="175" cy="100" r="1.5" fill="#fffde4"/>
+      <circle cx="228" cy="105" r="1.2" fill="#fffde4"/>
+      <circle cx="162" cy="115" r="1" fill="#f9e49a"/>
+    </g>
+
+    <!-- ─── WATERCOLOR EDGE BLEED (painterly border softness) ─── -->
+    <!-- Top bleed -->
+    <ellipse cx="200" cy="20" rx="160" ry="35" fill="#1a3d2b" opacity="0.45" filter="url(#softEdge)"/>
+    <!-- Bottom bleed -->
+    <ellipse cx="200" cy="388" rx="170" ry="30" fill="#1a3d2b" opacity="0.5" filter="url(#softEdge)"/>
+    <!-- Left bleed -->
+    <ellipse cx="18" cy="200" rx="28" ry="145" fill="#1b5e38" opacity="0.4" filter="url(#softEdge)"/>
+    <!-- Right bleed -->
+    <ellipse cx="382" cy="200" rx="28" ry="145" fill="#1b5e38" opacity="0.4" filter="url(#softEdge)"/>
+
+    <!-- ─── PAPER TEXTURE FINAL WASH ─── -->
+    <rect x="0" y="0" width="400" height="400" fill="#f5ecd0" opacity="0.04" filter="url(#paper)"/>
+
+  </g>
+
+  <!-- ─── CIRCULAR RIM / FRAME ─── -->
+  <!-- Gold rim light -->
+  <circle cx="200" cy="200" r="195" fill="url(#rimLight)"/>
+  <!-- Thin gold border -->
+  <circle cx="200" cy="200" r="193" fill="none" stroke="#c9a227" stroke-width="1.5" opacity="0.45"/>
+  <!-- Outer dark ring -->
+  <circle cx="200" cy="200" r="196" fill="none" stroke="#1a3d2b" stroke-width="3" opacity="0.6"/>
+
+</svg>
